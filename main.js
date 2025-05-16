@@ -50,6 +50,7 @@ ipcMain.handle('download', async (event, { url, format, output, mode }) => {
       url, '-f', `${format}+bestaudio`, '-o', output,
       '--ffmpeg-location', ffmpeg,
       '--merge-output-format', 'mkv',
+      '--postprocessor-args', 'ffmpeg:-c:a aac',
       '--newline'
     ];
   } else {
