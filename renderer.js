@@ -17,7 +17,7 @@ getBtn.onclick = async () => {
   const url = urlInput.value.trim();
   const codecFilter = codecSelect.value;
 
-  if (!url) return alert('Masukkan URL');
+  if (!url) return alert('Input URL');
   formatTable.innerHTML = '<tr><td>Loading...</td></tr>';
 
   const raw = await window.api.fetchFormats(url);
@@ -59,7 +59,7 @@ downloadBtn.onclick = async () => {
   progress.style.display = "inline-block";
 
   if (!url || (!isAudio && !selectedFormat)) {
-    alert('Pastikan URL dan format telah dipilih');
+    alert('Input URL and select format to download');
     return;
   }
 
@@ -76,10 +76,11 @@ downloadBtn.onclick = async () => {
     mode: isAudio ? 'audio' : 'video',
   });
 
-  new Notification("Download Selesai", {
-    body: `File ${output} berhasil disimpan.`,
+  new Notification("File Downloaded", {
+    body: `File ${output} saved.`,
   });
-  document.getElementById("progress").style.display = "none";
+  progress.style.display = "none";
+  downloadBtn.style.display = "inline-block";
 };
 
 window.api.onProgress(percent => {
