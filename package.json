@@ -8,7 +8,7 @@
     "dist": "electron-builder"
   },
   "build": {
-    "appId": "com.yourcompany.ytdownloader",
+    "appId": "com.ytdlp.ytdownloader",
     "productName": "YouTube Downloader",
     "files": [
       "**/*",
@@ -22,7 +22,8 @@
       }
     ],
     "win": {
-      "target": "nsis"
+      "target": "portable",
+      "artifactName": "${productName}-portable.exe"
     },
     "linux": {
       "target": "AppImage"
